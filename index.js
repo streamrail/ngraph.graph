@@ -232,8 +232,8 @@ function createGraph(options) {
       recordNodeChange = recordNodeChangeReal;
 
       // beginUpdate / endUpdate needs to be updated explicitly.
-      beginUpdate: enterModification;
-      endUpdate: exitModification;
+      beginUpdate = enterModification;
+      endUpdate = exitModification;
 
       // this will replace current `on` method with real pub/sub from `eventify`.
       graphPart.on = realOn;
