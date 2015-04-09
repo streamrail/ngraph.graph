@@ -226,14 +226,10 @@ function createGraph(options) {
 
     function on() {
       // now it's time to start tracking stuff:
-      enterModification = enterModificationReal;
-      exitModification = exitModificationReal;
+      graphPart.beginUpdate = enterModification = enterModificationReal;
+      graphPart.endUpdate = exitModification = exitModificationReal;
       recordLinkChange = recordLinkChangeReal;
       recordNodeChange = recordNodeChangeReal;
-
-      // beginUpdate / endUpdate needs to be updated explicitly.
-      graphPart.beginUpdate = enterModification;
-      graphPart.endUpdate = exitModification;
 
       // this will replace current `on` method with real pub/sub from `eventify`.
       graphPart.on = realOn;
